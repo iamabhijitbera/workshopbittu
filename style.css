@@ -100,6 +100,56 @@ button.secondary-btn { background-color: #7f8c8d; }
 .pagination button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
 .pagination span { font-weight: bold; }
 
+
+.stock-report-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.stock-report-filters label {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+#low-stock-range {
+    width: 100%;
+    max-width: 400px;
+}
+.stock-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.stock-item-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 5px solid var(--success-color); /* Default color */
+}
+.stock-item-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+.stock-item-card .item-code {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.stock-item-card .quantity-display {
+    text-align: right;
+}
+.stock-item-card .quantity-label {
+    font-size: 0.9rem;
+    color: #555;
+}
+.stock-item-card .quantity-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
 /* --- Modal & Print (No Changes) --- */
 .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
 .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 800px; }
