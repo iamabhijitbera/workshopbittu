@@ -624,7 +624,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             padding-bottom: 10px;
         ">
             <div>
-                <img src="images/logo_print.wepb" alt="Logo" style="
+                <img src="images/logo_print.webp" alt="Logo" style="
                     width: 100px; 
                     margin-bottom: 10px;
                 "><br>
