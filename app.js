@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const path = window.location.pathname;
         if (path.endsWith('dashboard.html')) loadDashboardData();
         else if (path.endsWith('stock.html')) setupStockPage();
+        else if (path.endsWith('stock-data.html')) setupStockDataPage();
         else if (path.endsWith('billing.html')) setupBillingPage();
         else if (path.endsWith('invoices.html')) setupInvoicesPage();
         else if (path.endsWith('employees.html')) setupEmployeesPage();
@@ -433,6 +434,80 @@ document.addEventListener('DOMContentLoaded', async () => {
         else { window.location.href = 'invoices.html'; }
     }
 
+
+    // --- Stock Data Report Page ---
+    function setupStockDataPage() {
+        const rangeSlider = document.getElementById('low-stock-range');
+        const rangeValueDisplay = document.getElementById('low-stock-range-value');
+
+        db.collection('Data/Stock/Items').orderBy('quantity', 'asc').onSnapshot(snapshot => {
+            allStockCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            
+            // Calculate and display total stock and value
+            let totalItems = 0;
+            let totalValue = 0;
+            allStockCache.forEach(item => {
+                totalItems += item.quantity;
+                totalValue += item.quantity * item.purchasePrice;
+            });
+            
+            const totalItemsEl = document.getElementById('total-stock-items-report');
+            const totalValueEl = document.getElementById('total-stock-value-report');
+            if (totalItemsEl) totalItemsEl.textContent = totalItems.toLocaleString('en-IN');
+            if (totalValueEl) totalValueEl.textContent = `₹${totalValue.toLocaleString('en-IN')}`;
+
+            renderStockDataCards();
+        });
+
+        if (rangeSlider && rangeValueDisplay) {
+            rangeSlider.addEventListener('input', () => {
+                rangeValueDisplay.textContent = rangeSlider.value;
+                renderStockDataCards();
+            });
+        }
+    }
+
+    function renderStockDataCards() {
+        const container = document.getElementById('stock-data-container');
+        const rangeSlider = document.getElementById('low-stock-range');
+        if (!container || !rangeSlider) return;
+
+        const threshold = parseInt(rangeSlider.value);
+        const lowStockItems = allStockCache.filter(item => item.quantity <= threshold);
+
+        container.innerHTML = '';
+
+        if (lowStockItems.length === 0) {
+            container.innerHTML = `<p class="card">No items found with quantity less than or equal to ${threshold}.</p>`;
+            return;
+        }
+
+        lowStockItems.forEach(item => {
+            let levelClass = '';
+            if (item.quantity === 0) {
+                levelClass = 'stock-level-out-of-stock';
+            } else if (item.quantity <= 5) {
+                levelClass = 'stock-level-very-low';
+            } else if (item.quantity <= 10) {
+                levelClass = 'stock-level-low';
+            }
+
+            const card = document.createElement('div');
+            card.className = `stock-item-card ${levelClass}`;
+            card.innerHTML = `
+                <div>
+                    <h4>${item.name}</h4>
+                    <p class="item-code">Code: ${item.code || 'N/A'}</p>
+                </div>
+                <div class="quantity-display">
+                    <p class="quantity-label">Current Stock</p>
+                    <p class="quantity-number">${item.quantity}</p>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
     // --- Invoices List Page ---
      let invoiceCurrentPage = 1;
     const INVOICES_PER_PAGE = 10;
@@ -524,6 +599,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         updatePaginationUI('invoice', endIndex >= filteredResults.length);
     }
+
+
+   
+
 
     
     // --- Generic Helper Functions ---
