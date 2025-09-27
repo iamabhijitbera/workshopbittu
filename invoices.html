@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoices - My Workshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.webp" alt="Logo" class="logo">
+                <h2 id="">Bholanath Workshop</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li><a href="billing.html">Create Invoice</a></li>
+                <li class="active"><a href="invoices.html">Invoices</a></li>
+                <li id="employee-link" style="display:none;"><a href="employees.html">Employees</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+             <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1>All Invoices</h1>
+            </header>
+            <main>
+                <div class="card">
+                    <div class="filters">
+                        <div class="filter-group search-filter">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="invoice-search" placeholder="Search by ID or Customer...">
+                        </div>
+                        <div class="filter-group">
+                            <label for="status-filter">Status:</label>
+                            <select id="status-filter">
+                                <option value="all">All</option>
+                                <option value="Paid">Paid</option>
+                                <option value="Due">Due</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="date-filter">Date:</label>
+                            <input type="date" id="date-filter">
+                        </div>
+                        <button id="clear-filters" class="secondary-btn">Clear</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="invoices-table">
+                            <thead>
+                                <tr>
+                                    <th>Invoice ID</th>
+                                    <th>Customer</th>
+                                    <th>Phone</th>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Invoice list will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="invoice-pagination">
+                        <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                        <span id="page-info">Page 1</span>
+                        <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <div id="invoice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="printable-invoice"></div>
+            <button id="modal-print-btn">Print</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

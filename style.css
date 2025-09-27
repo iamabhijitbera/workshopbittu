@@ -1,0 +1,138 @@
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #F5A623;
+    --background-color: #F4F7FC;
+    --sidebar-bg: #2C3E50;
+    --text-color: #333;
+    --text-light: #ECF0F1;
+    --border-color: #E0E0E0;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 8px rgba(0,0,0,0.05);
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Login Page (No Changes) --- */
+.login-container { display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, var(--primary-color) 0%, #34495E 100%); }
+.login-box { background: var(--card-bg); padding: 2.5rem; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 100%; max-width: 380px; }
+.logo-login { width: 80px; margin-bottom: 1rem; }
+.login-box h2 { margin-bottom: 1.5rem; color: var(--sidebar-bg); }
+.input-group { margin-bottom: 1.5rem; text-align: left; }
+.input-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+.input-group input { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; }
+.login-box button { width: 100%; padding: 0.9rem; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer; transition: background-color 0.3s; }
+.login-box button:hover { background-color: #357ABD; }
+.error-message { color: var(--danger-color); margin-top: 1rem; font-size: 0.9rem; }
+
+/* --- Main App Layout (No Changes) --- */
+.app-container { display: flex; height: 100vh; }
+.sidebar { width: 260px; background: var(--sidebar-bg); color: var(--text-light); display: flex; flex-direction: column; position: fixed; height: 100%; z-index: 100; }
+.sidebar-header { padding: 1.5rem; display: flex; align-items: center; border-bottom: 1px solid #34495E; }
+.logo { width: 40px; margin-right: 1rem; }
+.sidebar-header h2 { margin: 0; font-size: 1.2rem; }
+.sidebar-menu { list-style: none; padding: 0; margin: 1rem 0; flex-grow: 1; }
+.sidebar-menu li a { display: block; padding: 1rem 1.5rem; color: var(--text-light); text-decoration: none; transition: background-color 0.3s; border-left: 3px solid transparent; }
+.sidebar-menu li.active a, .sidebar-menu li a:hover { background-color: #34495E; border-left-color: var(--primary-color); }
+.sidebar-footer { padding: 1.5rem; border-top: 1px solid #34495E; }
+.sidebar-footer a { color: var(--text-light); text-decoration: none; display: block; text-align: center; }
+
+.main-content { margin-left: 260px; flex-grow: 1; display: flex; flex-direction: column; }
+header { background: var(--card-bg); padding: 1rem 2rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+main { padding: 2rem; overflow-y: auto; flex-grow: 1; }
+
+/* --- Cards & Dashboard (No Changes) --- */
+.dashboard-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.card { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 1.5rem;}
+.card h2 { margin-top: 0; }
+.card h3 { margin-top: 0; }
+.dashboard-cards .card p { font-size: 2rem; font-weight: bold; color: var(--primary-color); margin: 0.5rem 0 0 0; }
+.goal { background-color: #e0e0e0; border-radius: 20px; padding: 3px; position: relative; height: 25px; }
+.goal-progress { height: 100%; border-radius: 22px; background-color: var(--secondary-color); text-align: center; color: white; line-height: 25px; }
+.goal span { position: absolute; width: 100%; text-align: center; top: 4px; left: 0; font-weight: bold; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
+
+/* --- Tables & Actions (Minor Changes) --- */
+.table-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+thead { background-color: #f9f9f9; }
+th { font-weight: 600; }
+.status-paid { color: var(--success-color); font-weight: bold; }
+.status-due { color: var(--secondary-color); font-weight: bold; }
+td.actions { display: flex; gap: 0.5rem; align-items: center; }
+.action-btn { background: none; border: none; cursor: pointer; padding: 5px; font-size: 1.1rem; color: #555; }
+.action-btn:hover { opacity: 0.7; }
+
+/* --- Forms (No Changes) --- */
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+input, textarea, select { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; box-sizing: border-box; font-family: inherit; }
+button { padding: 0.8rem 1.5rem; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; transition: background-color 0.2s; }
+button:hover { opacity: 0.9; }
+button.secondary-btn { background-color: #7f8c8d; }
+
+/* --- Invoice Page (No Changes) --- */
+.invoice-form-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
+.item-search { position: relative; }
+#search-results { position: absolute; background: white; border: 1px solid #ddd; width: 100%; max-height: 200px; overflow-y: auto; z-index: 1000; border-radius: 5px; box-shadow: var(--shadow); }
+#search-results div { padding: 10px; cursor: pointer; }
+#search-results div:hover { background: #f0f0f0; }
+
+/* --- Filters & Pagination (UPDATED) --- */
+.filters { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); margin-bottom: 1rem; }
+.filter-group { display: flex; align-items: center; gap: 0.5rem; }
+.filter-group label { font-weight: 500; font-size: 0.9rem; }
+.filter-group.search-filter { flex-grow: 1; min-width: 250px; }
+.filter-group.search-filter i { color: #999; }
+.filter-group input, .filter-group select { padding: 0.6rem; border-radius: 5px; border: 1px solid var(--border-color); }
+.filter-group input[type="text"] { border: none; padding-left: 0.5rem; width: 100%; }
+.filter-group input[type="text"]:focus { outline: none; }
+.search-filter { border: 1px solid var(--border-color); border-radius: 5px; padding: 0 0.5rem; }
+.pagination { margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
+.pagination button { background-color: #ecf0f1; color: #333; border-radius: 5px; width: 40px; height: 40px; border: 1px solid var(--border-color); }
+.pagination button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+.pagination span { font-weight: bold; }
+
+/* --- Modal & Print (No Changes) --- */
+.modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+.modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 800px; }
+.close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+#modal-print-btn { margin-top: 20px; }
+
+@media print {
+  body.print-active > *:not(#invoice-modal) {
+    display: none !important;
+  }
+
+  body.print-active #invoice-modal {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background-color: white !important;
+    overflow: visible !important;
+  }
+  
+  body.print-active .modal-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.print-active .close-button,
+  body.print-active #modal-print-btn {
+    display: none !important;
+  }
+}

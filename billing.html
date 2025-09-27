@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Invoice - My Workshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.webp" alt="Logo" class="logo">
+                <h2 id="">Bholanath Workshop</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li class="active"><a href="billing.html">Create Invoice</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+                <li id="employee-link" style="display:none;"><a href="employees.html">Employees</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+             <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1 id="billing-page-title">Create Invoice</h1>
+            </header>
+            <main>
+                <form id="invoice-main-form">
+                    <input type="hidden" id="invoice-id">
+                    <div class="invoice-form-container">
+                        <div class="invoice-form">
+                            <div class="customer-details card">
+                                <h3>Customer Details</h3>
+                                <input type="text" id="customer-name" placeholder="Customer Name" required>
+                                <input type="text" id="customer-address" placeholder="Address">
+                                <input type="tel" id="customer-phone" placeholder="Phone Number">
+                            </div>
+                            <div class="invoice-items card">
+                                <h3>Invoice Items</h3>
+                                <div class="item-search">
+                                    <input type="text" id="item-search-input" placeholder="Search for an item by name or code...">
+                                    <div id="search-results"></div>
+                                </div>
+                                <table id="invoice-items-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="invoice-summary-card card">
+                            <h3>Summary & Actions</h3>
+                            <div class="invoice-summary">
+                                <p>Subtotal: <span id="invoice-subtotal">₹0.00</span></p>
+                                <p>GST (%): <input type="number" id="invoice-gst-rate" value="18" min="0"></p>
+                                <p>GST Amount: <span id="invoice-gst">₹0.00</span></p>
+                                <p>Discount (₹): <input type="number" id="invoice-discount" value="0" min="0"></p>
+                                <h4>Total: <span id="invoice-total">₹0.00</span></h4>
+                            </div>
+                            <div class="payment-details">
+                                <select id="payment-status">
+                                    <option value="Paid">Paid</option>
+                                    <option value="Due" selected>Due</option>
+                                </select>
+                                <select id="payment-mode">
+                                    <option value="Offline">Offline</option>
+                                    <option value="Online">Online</option>
+                                </select>
+                            </div>
+                            <div class="invoice-actions">
+                                <button type="button" id="save-invoice-btn" class="secondary-btn">Save Invoice</button>
+                                <button type="button" id="print-invoice-btn">Save & Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+    
+    <div id="invoice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="printable-invoice"></div>
+            <button id="modal-print-btn">Print</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management - My Workshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.webp" alt="Logo" class="logo">
+                <h2 id="">Bholanath Workshop</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li><a href="billing.html">Create Invoice</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+                <li id="employee-link" class="active" style="display:none;"><a href="employees.html">Employees</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+             <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1>Employee Management</h1>
+            </header>
+            <main>
+                <div class="card">
+                    <h2>Add New Employee</h2>
+                    <form id="add-employee-form" class="form-grid">
+                        <input type="email" id="employee-email" placeholder="Employee Email" required>
+                        <input type="password" id="employee-password" placeholder="Temporary Password" required>
+                        <select id="employee-role">
+                            <option value="employee">Employee</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <button type="submit">Add Employee</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h2>Manage Employees</h2>
+                    <table id="employees-table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Employee data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

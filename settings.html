@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - My Workshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.webp" alt="Logo" class="logo">
+                <h2 id="">Bholanath Workshop</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li><a href="billing.html">Create Invoice</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+                <li id="employee-link" style="display:none;"><a href="employees.html">Employees</a></li>
+                <li class="active"><a href="settings.html">Settings</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1>Settings</h1>
+            </header>
+            <main>
+                <div class="card">
+                    <h2>Workshop Details</h2>
+                    <form id="settings-form">
+                        <div class="form-grid">
+                            <input type="text" id="workshop-name" placeholder="Workshop Name" required>
+                            <textarea id="workshop-address" placeholder="Workshop Address"></textarea>
+                            <input type="tel" id="workshop-phone" placeholder="Workshop Phone Number">
+                        </div>
+                        <button type="submit">Save Settings</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Monthly Sales Goal</h2>
+                    <form id="goal-form">
+                        <div class="form-grid">
+                            <input type="number" id="monthly-goal" placeholder="e.g., 100000" required>
+                        </div>
+                        <button type="submit">Set Goal</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
