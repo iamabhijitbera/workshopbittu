@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Report - My Workshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Logo" class="logo">
+                <h2 id="sidebar-workshop-name">My Workshop</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="stock.html">Stock Management</a></li>
+                <li class="active"><a href="stock-data.html">Stock Report</a></li>
+                <li><a href="billing.html">Create Invoice</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+                <li id="employee-link" style="display:none;"><a href="employees.html">Employees</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+             <div class="sidebar-footer">
+                <a href="#" id="logout-btn">Logout</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1>Stock Report</h1>
+            </header>
+            <main>
+                <div class="dashboard-cards">
+                     <div class="card">
+                        <h3>Total Items in Stock</h3>
+                        <p id="total-stock-items-report">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Stock Value</h3>
+                        <p id="total-stock-value-report">₹0</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Low Stock Filter</h2>
+                    <div class="stock-report-filters">
+                        <label for="low-stock-range">Show items with quantity less than or equal to: <strong id="low-stock-range-value">10</strong></label>
+                        <input type="range" id="low-stock-range" min="1" max="50" value="10">
+                    </div>
+                </div>
+                <div id="stock-data-container" class="stock-card-grid">
+                    <!-- Stock data cards will be loaded here by JavaScript -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
